@@ -1,0 +1,14 @@
+.pageTitle {
+    align-self: end;
+}
+
+.pageTitle__title {
+    color: white;
+    font-size: 2rem;
+}
+
+@media all and (min-width: 320px) and (max-width:1024px) {
+    .pageTitle {
+        align-self: center;
+    }
+}

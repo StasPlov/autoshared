@@ -1,0 +1,18 @@
+.comment {
+    background: #8b8fa1;
+    padding: 10px;
+    margin-bottom: 1.25rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   .comment:last-child {
+        margin-bottom: 0;
+}
+
+.comment__text {
+    color: white;
+    font-size: 0.875rem;
+    letter-spacing: 0.25px;
+    margin-right: 0.9375rem;
+}

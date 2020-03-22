@@ -1,0 +1,33 @@
+.main {
+    background: #333645;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 3.125rem;
+    padding-top: 3.125rem;
+}
+
+.main__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: var(--maxWidth);
+    width: 100%;
+    margin-left: 3.125rem;
+    margin-right: 3.125rem;
+}
+
+.main__catalog {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3.125rem;
+    width: 100%;
+}
+
+@media all and (min-width: 320px) and (max-width:1023px) {
+    .main__wrapper {
+        margin-left: 1.125rem;
+        margin-right: 1.125rem;
+    }
+}

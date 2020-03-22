@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}autoccc.ru - Вход{% endblock %}
+
+{% block main %}
+<main class="main">
+    <div class="main__wrapper">
+
+        {% include('blocks/block-pageTitle.html.twig') with {'text' : 'Вход'} %}
+
+        {{ form_start(loginform, {'attr' : {'class' : 'loginForm'}}) }}
+
+            {% if error %}
+                <span class="loginForm__errorMessage">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="loginForm__infoContainer">
+                    <span class="loginForm__username">Сейчас вы авторизированны как {{ app.user.email }}</span>
+                    <a href="{{ path('userLogout') }}" class="loginForm__logoutLink">Выйти</a>
+                </div>
+            {% endif %}
+
+            {{ form_widget(loginform, {'attr' : {'class' : 'loginForm__container'}}) }}
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <section class="loginForm__registerlinkContainer">
+                <h3 class="loginForm__registerlinkTitle"> Не зарегестрированны ?</h3>
+                <a href="/register" class="loginForm__registerlink">Регистрация</a>
+            </section>
+
+        {{ form_end(loginform) }}
+
+
+    </div>
+</main>
+{% endblock %}

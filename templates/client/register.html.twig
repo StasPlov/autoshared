@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}autoccc.ru - Регистраиця{% endblock %}
+
+{% block main %}
+<main class="main">
+    <div class="main__wrapper">
+        {% include('blocks/block-pageTitle.html.twig') with {'text' : 'Регистрация'} %}
+
+        {{ form_start(registerform, {'attr' : {'class' : 'registerForm'}}) }}
+            {{ form_widget(registerform, {'attr' : {'class' : 'registerForm__container'}}) }}
+        {{ form_end(registerform) }}
+    </div>
+</main>
+{% endblock %}

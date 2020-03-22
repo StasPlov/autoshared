@@ -1,0 +1,35 @@
+.header {
+    background: #333645;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.header__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: var(--maxWidth);
+    width: 100%;
+    margin-left: 3.125rem;
+    margin-right: 3.125rem;
+}
+
+.header__menu {
+    display: flex;
+    align-items: center;
+    margin-top: 3.125rem;
+    margin-bottom: 3.125rem;
+    width: 100%;
+}
+
+@media all and (min-width: 320px) and (max-width:1023px) {
+    .header__wrapper {
+        margin-left: 1.125rem;
+        margin-right: 1.125rem;
+    }
+}
+
+
+/* background: #424556; */

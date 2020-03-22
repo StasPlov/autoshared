@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}autoccc.ru - {{ auto.mark }} {{ auto.model }}{% endblock %}
+
+
+{% block main %}
+
+    <main class="main">
+        <div class="main__wrapper">
+
+            <div class="catalogItemDetailed">
+
+                <section class="catalogItemDetailed__TitleContainer">
+                    <h2 class="catalogItemDetailed__title">{{ auto.mark }} {{ auto.model }}</h2>
+
+                    {% if is_granted('ROLE_USER') and (auto.user == app.user)  %}
+                    <div class="userFasterInterface">
+                        <a href="/user/editauto/{{ auto.id }}">
+                            <i class="userFasterInterface__button">Редактировать</i>
+                        </a>
+                        <a href="/user/deleteauto/{{ auto.id }}">
+                            <i class="userFasterInterface__button">Удалить</i>
+                        </a>
+                    </div>
+                    {% endif %}
+                </section>
+
+                <div id="gallery-items">
+                    <div class="catalogItemDetailed__imgContainer">
+                        <img class="catalogItemDetailed__img" src=" {{ asset('img/catalogItem/06.jpg') }} " draggable="false">
+                    </div>
+                </div>
+
+                <div class="catalogItemDetailed__aboutContainer">
+
+                    <ul class="autoInformationList">
+
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Двигатель: </span>
+                            <span class="autoInformationList__itemText">{{ auto.engine }}</span>
+                        </li>
+
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Мощность: </span>
+                            <span class="autoInformationList__itemText">{{ auto.power }}</span>
+                        </li>
+
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Трансмиссия: </span>
+                            <span class="autoInformationList__itemText">{{ auto.transmission }}</span>
+                        </li>
+
+                                
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Привод: </span>
+                            <span class="autoInformationList__itemText">{{ auto.drive }}</span>
+                        </li>
+
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Цвет: </span>
+                            <span class="autoInformationList__itemText">{{ auto.color }}</span>
+                        </li>
+
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Пробег, км:</span>
+                            <span class="autoInformationList__itemText">{{ auto.mileage }}</span>
+                        </li>
+
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Руль: </span>
+                            <span class="autoInformationList__itemText">{{ auto.steering }}</span>
+                        </li>
+
+                        <li class="autoInformationList__item">
+                            <span class="autoInformationList__itemHeader">Номер кузова: </span>
+                            <span class="autoInformationList__itemText">{{ auto.bodynumber }}</span>
+                        </li>
+
+                    </ul>
+
+                    <span class="catalogItemDetailed__text">{{ auto.description }}</span>
+                    
+                    {% if auto.comments.isEmpty == false %}
+                    <div class="catalogItemDetailed__comments">
+                        {% for comment  in auto.NoDeletedComments  %}
+                        <section class="comment">
+
+                            <span class="comment__text">{{ comment.content }}</span>
+
+                            {# Если мы авторизированые и это мой комментарий, но не мое объявление, то я могу удалять только свой комментарий #}
+                            {% if is_granted('ROLE_USER') and (comment.user == app.user) and (auto.user != app.user)  %}
+                            <div class="userFasterInterface">
+                                <a href="/catalog/{{ auto.id }}/commentedit/{{ comment.id }}">
+                                    <i class="userFasterInterface__button">Редактировать</i>
+                                </a>
+                                <a href="/catalog/{{ auto.id }}/commentdelete/{{ comment.id }}">
+                                    <i class="userFasterInterface__button">Удалить</i>
+                                </a>
+                            </div>
+                            {# Если мы авторизированые и это мой комсентарий, и мое объявление, то я могу удалять все комментарии #}
+                            {% elseif is_granted('ROLE_USER') and (auto.user == app.user) %}
+                            <div class="userFasterInterface">
+                                <a href="/catalog/{{ auto.id }}/commentedit/{{ comment.id }}">
+                                    <i class="userFasterInterface__button">Редактировать</i>
+                                </a>
+                                <a href="/catalog/{{ auto.id }}/commentdelete/{{ comment.id }}">
+                                    <i class="userFasterInterface__button">Удалить</i>
+                                </a>
+                            </div>
+                            {% endif %}
+
+                        </section>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_USER') %}
+                        {{ form_start(commentForm, {'attr' : {'class' : 'addCommentForm'}}) }}
+                            {{ form_widget(commentForm, {'attr' : {'class' : 'addCommentForm__container'}}) }}
+                        {{ form_end(commentForm) }}
+                    {% endif %}
+
+                </div>              
+                    
+            </div>
+
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}autoccc.ru - Добавление объявления {% endblock %}
+
+{% block main %}
+<main class="main">
+    <div class="main__wrapper">
+
+        {% include('blocks/block-pageTitle.html.twig') with {'text' : 'Добавление авто'} %}
+
+        {{ form_start(addautoForm, {'attr' : {'class' : 'addAutoForm'}}) }}
+            {{ form_widget(addautoForm, {'attr' : {'class' : 'addAutoForm__container'}}) }}
+        {{ form_end(addautoForm) }}
+
+    </div>
+</main>
+{% endblock %}

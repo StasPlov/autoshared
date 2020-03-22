@@ -1,0 +1,55 @@
+<nav class="menu">
+    <ul class="menuList ">
+
+        <li class="menuList__item">
+            <a href="/catalog" class="menuList__link">Каталог</a>
+        </li>
+        
+        {% if is_granted('ROLE_USER') %}
+        <li class="menuList__item">
+            <a href="/user" class="menuList__link">Личный кабинет</a>
+        </li>
+
+        {% if is_granted('ROLE_ADMIN') %}
+        <li class="menuList__item">
+            <a href="/admin" class="menuList__link">Админ панель</a>
+        </li>
+        {% endif %}
+
+        {% else %}
+        <li class="menuList__item">
+            <a href="/login" class="menuList__link">Войти</a>
+        </li>
+        {% endif %}
+
+    </ul>
+
+    <div id="open-mobile-menu" class="globalMobile__openMobileMenuButton globalMobileContent">☰</div>
+    
+    <div id="mobile-menu" class="globalMobileMenu globalMobileContent animated fadeOut hide">
+        <ul class="globalMobile__container">
+            <li class="globalMobile__containerItem">
+                <a href="/catalog" class="menuList__link">Каталог</a>
+            </li>
+            
+            {% if is_granted('ROLE_USER') %}
+            <li class="globalMobile__containerItem">
+                <a href="/user" class="menuList__link">Личный кабинет</a>
+            </li>
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="globalMobile__containerItem">
+                <a href="/admin" class="menuList__link">Админ панель</a>
+            </li>
+            {% endif %}
+
+            {% else %}
+            <li class="globalMobile__containerItem">
+                <a href="/login" class="menuList__link">Войти</a>
+            </li>
+            {% endif %}
+
+        </ul>
+        <i id="close-mobile-menu" class="globalMobile__closeMobileMenu">×</i>
+    </div>
+</nav>

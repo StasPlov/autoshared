@@ -1,0 +1,56 @@
+<a href="/catalog/{{ auto.id }}" class="catalogItem">
+
+    <div class="catalogItem__imgContainer">
+        <img class="catalogItem__img" src="{{ asset('img/catalogItem/01.jpg') }}" draggable="false">
+    </div>
+
+    <div class="catalogItem__aboutContainer">
+    
+        <h2 class="catalogItem__header">{{ auto.mark }} {{ auto.model }}</h2>
+    
+        <ul class="autoInformationList">
+
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Двигатель: </span>
+                <span class="autoInformationList__itemText">{{ auto.engine }}</span>
+            </li>
+
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Мощность: </span>
+                <span class="autoInformationList__itemText">{{ auto.power }}</span>
+            </li>
+
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Трансмиссия: </span>
+                <span class="autoInformationList__itemText">{{ auto.drive }}</span>
+            </li>
+            
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Привод: </span>
+                <span class="autoInformationList__itemText">{{ auto.transmission }}</span>
+            </li>
+
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Цвет: </span>
+                <span class="autoInformationList__itemText">{{ auto.color }}</span>
+            </li>
+
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Пробег, км:</span>
+                <span class="autoInformationList__itemText">{{ auto.mileage }}</span>
+            </li>
+
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Руль: </span>
+                <span class="autoInformationList__itemText">{{ auto.steering }}</span>
+            </li>
+
+            <li class="autoInformationList__item">
+                <span class="autoInformationList__itemHeader">Номер кузова: </span>
+                <span class="autoInformationList__itemText">{{ auto.bodyNumber }}</span>
+            </li>
+
+        </ul>
+
+    </div>
+</a>

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}autoccc.ru - Каталог автомобилей{% endblock %}
+
+
+{% block main %}
+<main class="main">
+    <div class="main__wrapper">
+        
+        {% include('blocks/block-pageTitle.html.twig') with {'text' : 'Каталог'} %}
+
+        <div class="main__catalog">
+        {% for auto  in autos  %}
+            {% include('blocks/block-catalogItem.html.twig') with {'auto' : auto} %}
+        {% endfor %}
+        </div>
+
+
+    </div>
+</main>
+{% endblock %}

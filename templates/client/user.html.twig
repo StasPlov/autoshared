@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}autoccc.ru - Личный кабинет {{ app.user.username }}{% endblock %}
+
+{% block main %}
+<main class="main">
+    <div class="main__wrapper">
+
+        {% include('blocks/block-pageTitle.html.twig') with {'text' : 'Личный кабинет'} %}
+
+        <div class="user">
+
+            <div class="user__infoContainer">
+                <div class="user__imgContainer">
+                    <img class="user__imgContainerImg" src=" {{ asset('img/catalogItem/06.jpg') }} " draggable="false">
+                </div>
+                <ul class="user__infoContainerList">
+                    <li class="user__infoContainerListItem">
+                        <span class="user__nameLabel">ID:</span>
+                        <span class="user__text">{{ user.id }}</span>
+                    </li>
+                    <li class="user__infoContainerListItem">
+                        <span class="user__nameLabel">Имя:</span>
+                        <span class="user__text">{{ user.name }}</span>
+                    </li>
+                    <li class="user__infoContainerListItem">
+                        <span class="user__nameLabel">Дата регистрации:</span>
+                        <span class="user__text">{{ user.registerdate|date("m.d.Y") }}</span>
+                    </li>
+                    <li class="user__infoContainerListItem">
+                        <span class="user__nameLabel">E-mail:</span>
+                        <span class="user__text">{{ user.email }}</span>
+                    </li>
+                </ul>
+
+                {% if is_granted('ROLE_USER') and (user == app.user)  %}
+                <div class="userFasterInterface">
+                    <a href="/logout">
+                        <i class="userFasterInterface__button">Выйти</i>
+                    </a>
+                </div>
+                {% endif %}
+
+            </div>
+            
+            <div class="user__auto">
+
+                <section class="user__autoTitleContainer">
+
+                    <h2 class="user__autoTitle">Ваши объявления</h2>
+
+                    <div class="userFasterInterface">
+                        <a href="/user/addauto">
+                            <i class="userFasterInterface__button">Добавить объявление</i>
+                        </a>
+                    </div>
+
+                </section>
+
+                <div class="user__autolist">
+                {% if user.catalogAutos.isEmpty == false %}
+                {% for auto  in user.getNoDeletedCatalogAutos  %}
+                    {% include('blocks/block-catalogItem.html.twig') with {'auto' : auto} %}
+                {% endfor %}
+                {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,15 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "gulp-terser": "^1.2.0"
+  }
+}

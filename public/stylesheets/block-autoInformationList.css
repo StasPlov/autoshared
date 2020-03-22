@@ -1,0 +1,26 @@
+.autoInformationList {
+    display: flex;
+    flex-direction: column;
+}   
+
+.autoInformationList__item {
+    display: flex;
+    flex-direction: wrap;
+    margin-bottom: 0.5rem;
+}   .autoInformationList__item:last-child {
+        margin-bottom: 0;
+}
+
+.autoInformationList__itemHeader {
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    margin-right: 0.75rem;
+}
+
+.autoInformationList__itemText {
+    color: white;
+    font-size: 1rem;
+    font-weight: 200;
+    letter-spacing: 1px;
+}

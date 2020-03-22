@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    
+    <title>{% block title %}Добро пожаловать{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     
+    <!--favicon-->
+    <link rel="shortcut icon" href="{{ asset('/img/favicon.ico') }}" type="image/x-icon">
+    <link href="{{ asset('/js/lightgallery/dist/css/lightgallery.css') }}" type="image/x-icon">
+
+    <!--script`s-->
+    <script src="{{ asset('main.min.js') }}"></script>
+    <script src="{{ asset('/js/lightgallery/dist/js/lightgallery.js') }}"></script>
+                 
+    <!--style`s-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('style.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+
+{% block header %}
+<header class="header">
+    <div class="header__wrapper">
+
+        <div class="header__menu">
+                {% include('blocks/block-logo.html.twig') %}
+                {% include('blocks/block-menu.html.twig') %} 
+        </div>
+
+    </div>
+</header>
+{% endblock %}
+
+
+
+
+{% block main %}
+<main class="main">
+    <div class="main__wrapper"></div>
+</main>
+{% endblock %}
+
+
+
+{% block footer %}
+<footer class="footer"> 
+    <div class="footer__wrapper"></div>
+</footer>
+{% endblock %}
+
+
+
+</body>
+</html>

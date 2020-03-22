@@ -1,0 +1,74 @@
+.loginForm {
+    max-width: 100%;
+    margin-top: 3.125rem;
+}
+
+.loginForm__username {
+    color: white;
+    font-size: 1rem;
+    margin-right: 0.625rem;
+}
+
+.loginForm__infoContainer {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loginForm__logoutLink {
+    color: white;
+    font-size: 1rem;
+    padding: 0.3125rem;
+    background: #e75959;
+    border-radius: 5px;
+}
+
+.loginForm__inputField {
+    width: calc(100% - 20px);
+    height: 100%;
+    max-width: 100%;
+    max-height: 1.25rem;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.625rem;
+    letter-spacing: 0.25px; 
+    margin-bottom: 0.75rem;
+    font-family: Geometria,Open Sans,Roboto;
+    font-size: 1rem;
+    color: #222;
+}
+
+.loginForm__submitButton {
+    padding: 0.625rem;
+    font-family: Geometria,Open Sans,Roboto;
+    font-weight: 500;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 0.625rem;
+    background: #58ffb2;
+    color: #444;
+    font-size: 0.8125rem;
+    letter-spacing: 0.5px;
+    transition-duration: 200ms;
+    cursor: pointer;
+}   .loginForm__submitButton:hover {
+        background: #48c68c;
+        transform: scale(1.05);
+}
+
+.loginForm__registerlinkContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+}
+.loginForm__registerlinkTitle {
+    color: #ffffff49;
+    font-size: 1rem;
+    margin-right: 0.625rem;
+}
+.loginForm__registerlink {
+    color: #ffffff49;
+    font-size: 1rem;
+}
