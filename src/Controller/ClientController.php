@@ -70,7 +70,7 @@ class ClientController extends AbstractController
     }
 
     /**
-    *  
+    * Изменение комметария
     * @Route("/catalog/{catalogAuto}/commentedit/{comment}", name="commentEdit")
     * @IsGranted("ROLE_USER");
     */
