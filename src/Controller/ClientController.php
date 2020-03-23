@@ -19,7 +19,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class ClientController extends AbstractController
 {
-    /**
+    /** Запрос главной страницы
     * @Route("/", name="main")
     */
     public function index() 
@@ -27,8 +27,7 @@ class ClientController extends AbstractController
         return $this->render('client/index.html.twig');
     }
 
-    // Путь для запроса каталога на сайте
-    /**
+    /** Запрос страницы каталога
     * @Route("/catalog", name="catalog")
     */
     public function catalog(EntityManagerInterface $entityManager) 
@@ -40,7 +39,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    /**
+    /** Переход по какому либо объявлению из каталога
     * @Route("/catalog/{catalogAuto}", name="catalogAuto")
     */
     public function catalogAuto(CatalogAuto $catalogAuto, Request $request, EntityManagerInterface $entityManager) 
@@ -69,8 +68,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    /**
-    * Изменение комметария
+    /** Изменение комметария
     * @Route("/catalog/{catalogAuto}/commentedit/{comment}", name="commentEdit")
     * @IsGranted("ROLE_USER");
     */
@@ -97,8 +95,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    /**
-    *  
+    /** Удаление комментария 
     * @Route("/catalog/{catalogAuto}/commentdelete/{comment}", name="commentDelete")
     * @IsGranted("ROLE_USER");
     */
@@ -115,7 +112,7 @@ class ClientController extends AbstractController
         return $this->redirectToRoute('catalogAuto', ['catalogAuto' => $catalogAuto->getId()]);
     }
 
-    /**
+    /** Регистрация
     * @Route("/register", name="userRegister")
     */
     public function userRegister(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder) 
@@ -144,7 +141,7 @@ class ClientController extends AbstractController
 
 
 
-    /**
+    /** Вход на сайт
      * @Route("/login", name="userLogin")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -161,7 +158,7 @@ class ClientController extends AbstractController
         );
     }
 
-    /**
+    /** Выход с сайта
      * @Route("/logout", name="userLogout")
      */
     public function logout()
@@ -172,7 +169,7 @@ class ClientController extends AbstractController
 
 
 
-    /**
+    /** Личный кабинет пользователя
      * @Route("/user", name="user")
      * @IsGranted("ROLE_USER");
      */
@@ -184,7 +181,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    /**
+    /** Добавление объявления
      * @Route("/user/addauto", name="userAddAuto")
      * @IsGranted("ROLE_USER");
      */
@@ -213,7 +210,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    /**
+    /** Редактирование объявления
      * @Route("/user/editauto/{catalogAuto}", name="userEditAuto")
      * @IsGranted("ROLE_USER");
      */
@@ -239,7 +236,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    /**
+    /** Удаление объявления
      * @Route("/user/deleteauto/{catalogAuto}", name="userDeleteAuto")
      * @IsGranted("ROLE_USER");
      */
