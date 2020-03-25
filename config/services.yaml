@@ -30,14 +30,3 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-
-
-
-
-
-    #Смена Service ID для моего сервиса 
-    App\Service\Converter:
-        alias: converter
-
-    converter:
-        class: App\Service\Converter
