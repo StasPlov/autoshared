@@ -91,10 +91,16 @@ class CatalogAuto
      */
     private $User;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\File", mappedBy="catalogauto")
+     */
+    private $files;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->isDeleted = false;
+        $this->files = new ArrayCollection();
     }
 
 
@@ -295,6 +301,37 @@ class CatalogAuto
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|File[]
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(File $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files[] = $file;
+            $file->setCatalogauto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(File $file): self
+    {
+        if ($this->files->contains($file)) {
+            $this->files->removeElement($file);
+            // set the owning side to null (unless already changed)
+            if ($file->getCatalogauto() === $this) {
+                $file->setCatalogauto(null);
+            }
+        }
 
         return $this;
     }

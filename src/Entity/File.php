@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,9 +23,20 @@ class File
     private $file;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime")
      */
     private $uploaddate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CatalogAuto", inversedBy="files")
+     */
+    private $catalogauto;
+
+    public function __construct()
+    {
+        $this->uploaddate = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +63,18 @@ class File
     public function setUploaddate(\DateTimeInterface $uploaddate): self
     {
         $this->uploaddate = $uploaddate;
+
+        return $this;
+    }
+
+    public function getCatalogauto(): ?CatalogAuto
+    {
+        return $this->catalogauto;
+    }
+
+    public function setCatalogauto(?CatalogAuto $catalogauto): self
+    {
+        $this->catalogauto = $catalogauto;
 
         return $this;
     }
