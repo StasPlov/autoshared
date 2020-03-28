@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\CatalogAuto;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -93,12 +94,29 @@ class AddAutoFormType extends AbstractType
                     'class' => 'addAutoForm__textfield', 
                     'placeholder' => 'Описание'
                 ]])
+                
+            ->add('file', FileType::class, [
+                'label' => 'Загрузить фото',
+
+                // Означает, что это поле не связано ни с одним свойством сущности, к которой мы привязали форму (CatalogAuto),
+                // так как у нас есть отдельная таблица для файлов
+                'mapped' => false,
+
+                'label_attr' => [
+                    'class' => 'addAutoForm__loadImgButton'
+                ],
+                'attr' => [
+                    'style' => 'display: none',
+                    'class' => false,
+                    'placeholder' => 'Описание'
+                ]])
 
             ->add('sand', SubmitType::class, [
                 'label' => 'Опубликовать',
                 'attr' => [
                     'class' => 'addAutoForm__submitButton'
-                ]]);
+            ]]);
+            
     }
 
     public function configureOptions(OptionsResolver $resolver) {

@@ -11,6 +11,7 @@ use App\Form\RegisterFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -191,10 +192,12 @@ class ClientController extends AbstractController
         $addautoForm->handleRequest($request);
 
         if ($addautoForm->isSubmitted() && $addautoForm->isValid()) {
+
             $auto = $addautoForm->getData();
+            $file = $addautoForm->get('file')->getData(); // доделать добавление файлов(изображений)
 
             $auto->setUser($this->getUser());
-            //$auto->setIsDeleted(false);
+            //$auto->setIsDeleted(false); // это значение теперь добавляеться в конструкторе сущьности автоматически
 
             $entityManager->persist($auto);
             $entityManager->flush();

@@ -298,5 +298,4 @@ class CatalogAuto
 
         return $this;
     }
-
 }
